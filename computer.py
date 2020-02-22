@@ -47,7 +47,22 @@ for i in arg_list:
 print  "A = " + str(A)
 print  "B = " + str(B)
 print  "C = " + str(C)
-print "Simplified form: " + str(A) + "X^2 +" + str(B) + "X  + " + str(C) + " = 0"
-DELTA = B**2 - 4*A*C
-print "DELTA =" + str(DELTA)
-
+if A:
+	print "Simplified form: " + str(A) + "X^2 +" + str(B) + "X  + " + str(C) + " = 0"
+	DELTA = B**2 - 4*A*C
+	print "DELTA =" + str(DELTA)
+	if DELTA == 0:
+		X = -B / 2 * A
+		print "This polynomial equation have 1 solution X = " + str(X)
+	elif DELTA > 0:
+		print "This polynomial equation have 1 solution X1 = " + str(-B) + "+ square(" + str(DELTA) + ") /" + str(2* A) + "  X2= " + str(-B) + "- square(" + str(DELTA) + ") /" + str(2* A) 
+	elif DELTA < 0:
+		print "This polynomial equation have 1 solution X1 = " + str(-B) + " - i * square(" + str(-DELTA) + ") /" + str(2* A) + "  X2= " + str(-B) + "+ i * square(" + str(-DELTA) + ") /" + str(2* A) 
+else:
+	if B != 0:
+		X = B / C
+		print "This equation have one solution X= " + str(B) + "/" + str(C) + "  or X= " + str(X)
+	elif B == 0 and C != 0:
+		sys.exit("This equation is wrong")
+	elif C == 0:
+		print "Every Number are solution"
