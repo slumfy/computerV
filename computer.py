@@ -8,10 +8,13 @@ C = 0
 sign = 1
 if   len(sys.argv) < 2 :
 	sys.exit("Need an argument")
-
 arg = str(sys.argv[1])
 arg_list = arg.split()
 print arg_list
+for i in arg_list:
+	if  i.isdigit() == False and i != 'X^0' and i != 'X^1' and i != 'X^2' and i != 'X' and i != '+'  and i != '-' and i != '*' and i != '=':
+		print i
+		sys.exit("not a valid expression")
 if arg_list.count('=') != 1:
 	sys.exit("not a valid expression")
 lenght = len(arg_list) - 1
