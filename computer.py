@@ -1,6 +1,18 @@
 #!/usr/bin/python
 import sys
-import re
+
+def Sqrt(x):
+	lo = 0.0
+	hi = float(x)
+	for i in range(1000):
+		mid = (lo + hi)/2
+		if (mid * mid) == float(x):
+			return mid
+		elif (mid * mid) > float(x):
+			hi = mid
+		else:
+			lo = mid
+	return mid
 
 A = 0
 B = 0
@@ -55,12 +67,15 @@ if A:
 		X = -B / 2 * A
 		print "This polynomial equation have 1 solution X = " + str(X)
 	elif DELTA > 0:
-		print "This polynomial equation have 1 solution X1 = " + str(-B) + "+ square(" + str(DELTA) + ") /" + str(2* A) + "  X2= " + str(-B) + "- square(" + str(DELTA) + ") /" + str(2* A) 
+		print "This polynomial equation have 1 solution X1 = " + str(-B) + "+ square(" + str(DELTA) + ") / " + str(2* A) + "  X2= " + str(-B) + "- square(" + str(DELTA) + ") / " + str(2* A)
+		X1 = (-B + Sqrt(DELTA)) / 2 * A
+		X2 = (-B - Sqrt(DELTA)) / 2 * A
+		print "X1 = " + str(X1) + " X2 = " + str(X2)
 	elif DELTA < 0:
 		print "This polynomial equation have 1 solution X1 = " + str(-B) + " - i * square(" + str(-DELTA) + ") /" + str(2* A) + "  X2= " + str(-B) + "+ i * square(" + str(-DELTA) + ") /" + str(2* A) 
 else:
 	if B != 0:
-		X = B / C
+		X = B / -C
 		print "This equation have one solution X= " + str(B) + "/" + str(C) + "  or X= " + str(X)
 	elif B == 0 and C != 0:
 		sys.exit("This equation is wrong")
