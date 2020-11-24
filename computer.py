@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 import sys
 
-def Add(i, X, sign, s):
+def Add(i, sign, s):
+	X = 0
 	tmp = i.split('*')
 	for x in tmp:
 		if x.find(s) == -1:
 			X += float(x) * sign
+	return(X)
 
 def Sqrt(x):
 	lo = 0.0
@@ -52,11 +54,11 @@ for i in arg_list:
 	print (i)
 	print (i.split('*'))
 	if i.find("X^2") != -1:
-		Add(i, A, sign, "X^2")
+		A = Add(i, sign, "X^2")
 	elif i.find("X^0") != -1:
-				Add(i, C, sign,"X^0")
+				C = Add(i, sign,"X^0")
 	elif i.find("X") != -1:
-				Add(i, B, sign,"X")
+				B = Add(i, sign,"X")
 	elif i == "=":
 		sign = -1
 	else:
