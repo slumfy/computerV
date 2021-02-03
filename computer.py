@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
-import math # 3rd degre only
+import utils as utils
+from solver_3rd import solver_3rd
 
 class computer:
 	A = 0
@@ -52,7 +53,7 @@ class computer:
 	def solving_equation(self):
 		self.print_reduction()
 		if self.degre == 3:
-			self.solve_3_degre()
+			solver_3rd(self.Z,self.A,self.B,self.C)
 		elif self.degre == 2:
 			self.solve_2_degre() 
 		elif self.degre == 1:
@@ -85,56 +86,6 @@ class computer:
 		else:
 			self.degre = 0
 
-	def solve_3_degre(self):
-		#http://www.1728.org/cubic2.htm
-		f = ((3 * self.B/self.Z) - (self.power(self.A,2)/self.power(self.Z,2)))/3
-		print("F: ",f)
-		g = ((2 * self.power(self.A,3) / self.power(self.Z,3)) - (9 * self.A * self.B / self.power(self.Z,2)) + (27 * self.C/self.Z))/27
-		print("G: ",g)
-		h = (self.power(g,2) / 4) + (self.power(f,3) / 27)
-		print("H: ",h)
-		#	When h <= 0, as is the case here, all 3 roots are real
-		if h == 0 and f == 0 and g == 0:
-			x = self.cube(self.C/self.Z) * -1
-			print("solution are:")
-			print("X1 = X2 = X3 = ", x, "round = ", round(x))
-		elif h <= 0:
-			i = self.Sqrt(((self.power(g,2)/4) - h))
-			print("I: ",i)
-			j = self.cube(i)
-			print("J: ",j)
-			k = math.acos(-(g / (2 * i)))
-			print("K: ",k)
-			l = -j
-			print("L: ",l)
-			m = math.cos(k/3)
-			print("M: ",m)
-			n = self.Sqrt(3) * math.sin(k/3)
-			print("N: ",n)
-			p = (self.A / (3 * self.Z)) * -1
-			print("P: ",p)
-			x1 = 2 * j * m - (self.A /(3 * self.Z))
-			x2 = l * (m + n) + p
-			x3 = l * (m - n) + p
-			print("solution are:")
-			print("X1 = ", x1, "round = ", round(x1))
-			print("X2 = ", x2, "round = ", round(x2))
-			print("X3 = ", x3, "round = ", round(x3))
-		elif h > 0:
-			r = -(g/2) + self.Sqrt(h)
-			print("R: ",r)
-			s = self.cube(r)
-			print("S: ",s)
-			t = -(g/2) - self.Sqrt(h)
-			print("T: ",t)
-			u =	self.cube(t)
-			print("U: ", u)
-			x1 = (s + u) - (self.A / (3 * self.Z))
-			print("solution are:")
-			print("X1 = ", x1, "round = ", round(x1))
-			print("X2 = ",(-(s + u)/2 - (self.A / (3 * self.Z))),"+ I * ",(s - u) * self.Sqrt(3)/2)
-			print("X3 = ",(-(s + u)/2 - (self.A / (3 * self.Z))),"- I * ",(s - u) * self.Sqrt(3)/2)
-
 	def solve_2_degre(self):
 		self.DELTA = self.B**2 - 4*self.A*self.C
 		print ("DELTA =" + str(self.DELTA))
@@ -143,8 +94,8 @@ class computer:
 			print ("This polynomial equation have 1 solution X = " + str(X))
 		elif self.DELTA > 0:
 			print ("This polynomial equation have 1 solution X1 = " + str(-self.B) + "+ square(" + str(self.DELTA) + ") / " + str(2* self.A) + "  X2= " + str(-self.B) + "- square(" + str(self.DELTA) + ") / " + str(2* self.A))
-			X1 = (-self.B + self.Sqrt(self.DELTA)) / 2 * self.A
-			X2 = (-self.B - self.Sqrt(self.DELTA)) / 2 * self.A
+			X1 = (-self.B + utils.Sqrt(self.DELTA)) / 2 * self.A
+			X2 = (-self.B - utils.Sqrt(self.DELTA)) / 2 * self.A
 			print ("X1 = " + str(X1) + " X2 = " + str(X2))
 		elif self.DELTA < 0:
 			print ("This polynomial equation have 1 solution X1 = " + str(-self.B) + " - i * square(" + str(-self.DELTA) + ") /" + str(2* self.A) + "  X2= " + str(-self.B) + "+ i * square(" + str(-self.DELTA) + ") /" + str(2* self.A))
@@ -170,38 +121,6 @@ class computer:
 		else:
 			V += 1.0 * sign
 		return(V)
-
-	def power(self,x, y):
-		if(y == 0): return 1
-		temp = self.power(x, int(y / 2)) 
-		if (y % 2 == 0):
-			return temp * temp
-		else:
-			if(y > 0): return x * temp * temp
-			else: return (temp * temp) / x
-
-	def cube(self,x):
-		if 0<=x: 
-			return x**(1./3.)
-		return -(-x)**(1./3.)
-
-	def Sqrt(self, x):
-		lo = 0.0
-		hi = float(x)
-		for i in range(1000):
-			mid = (lo + hi)/2
-			if (mid * mid) == float(x):
-				return mid
-			elif (mid * mid) > float(x):
-				hi = mid
-			else:
-				lo = mid
-		return mid
-
-	def acos(self, x):
-		# return 1.57079-1.57079*x
-		return (-0.69813170079773212 * x * x - 0.87266462599716477) * x + 1.5707963267948966
-
 
 if __name__ == "__main__":
 	if   len(sys.argv) < 2 :
