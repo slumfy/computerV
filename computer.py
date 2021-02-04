@@ -31,7 +31,7 @@ class computer:
 				lenght -= 1
 			else:
 				i +=1
-		# print (arg_list)
+		print (arg_list)
 		for i in arg_list:
 			# print (i)
 			# print (i.split('*'))
@@ -124,8 +124,10 @@ class computer:
 		tmp = i.split('*')
 		if tmp[0].find(s) == -1:
 			V += float(tmp[0]) * sign
-		else:
+		elif tmp[0].find("-") == -1:
 			V += 1.0 * sign
+		else:
+			V += -1.0 * sign
 		return(V)
 
 if __name__ == "__main__":
