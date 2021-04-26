@@ -52,15 +52,19 @@ class computer:
                 utils.print_sign(self.C)
             utils.print_abs(self.C)
         if self.B != 0:
-            utils.print_sign(self.B)
+            if (self.C == 0 and self.B < 0) or self.C != 0:
+                utils.print_sign(self.B)
             utils.print_abs(self.B)
             print(" * X ",end="")
         if self.A != 0:
-            utils.print_sign(self.A)
+            if (self.C == 0 and self.B == 0 and self.A < 0) or self.C != 0 or self.B != 0:
+                utils.print_sign(self.A)
             utils.print_abs(self.A)
             print(" * X^2 ",end="")
         if self.Z != 0:
-            utils.print_sign(self.Z)
+            if (self.C == 0 and self.B == 0 and self.A == 0 and self.Z < 0) \
+                or self.C != 0 or self.B != 0 or self.A != 0:
+                utils.print_sign(self.Z)
             utils.print_abs(self.Z)
             print(" * X^3 ",end="")
         print("= 0")
