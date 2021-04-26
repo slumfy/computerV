@@ -19,3 +19,15 @@ def Sqrt(x):
 		else:
 			lo = mid
 	return mid
+
+def print_abs(nb):
+	if nb < 0:
+		print(-nb,end="")
+	else:
+		print(nb,end="")
+
+def print_sign(nb):
+	if nb < 0:
+		print(" - ",end="")
+	else:
+		print(" + ",end="")
