@@ -83,23 +83,24 @@ class computer:
         self.DELTA = self.B**2 - 4*self.A*self.C
         print ("DELTA =" + str(self.DELTA))
         if self.DELTA == 0:
-            X = -self.B / 2 * self.A
+            X = -self.B / (2 * self.A)
             print ("This polynomial equation have 1 solution:\n X = " + str(X))
         elif self.DELTA > 0:
             print("This polynomial equation have 2 solution:")
             print("X1 = " + str(-self.B) + " + square(" + str(self.DELTA) + ") / " + str(2 * self.A))
-            print("X2= " + str(-self.B) + " - square(" + str(self.DELTA) + ") / " + str(2* self.A))
-            X1 = (-self.B + utils.Sqrt(self.DELTA)) / 2 * self.A
-            X2 = (-self.B - utils.Sqrt(self.DELTA)) / 2 * self.A
-            print ("X1 = " + str(X1) + " X2 = " + str(X2))
+            print("X2 = " + str(-self.B) + " - square(" + str(self.DELTA) + ") / " + str(2* self.A))
+            X1 = (-self.B + utils.Sqrt(self.DELTA)) / (2 * self.A)
+            X2 = (-self.B - utils.Sqrt(self.DELTA)) / (2 * self.A)
+            print("X1 = " + str(X1))
+            print("X2 = " + str(X2))
         elif self.DELTA < 0:
             print("This polynomial equation have 2 complex solution:")
             print("X1 = " + str(-self.B) + "/" + str(2* self.A) + " - i * square(" + str(-self.DELTA) + ")/" + str(2* self.A))
-            print("X2= " + str(-self.B) + "/" + str(2* self.A) + " + i * square(" + str(-self.DELTA) + ")/" + str(2* self.A))
-            X1 = -self.B / 2 * self.A
-            X2 = -self.B / 2 * self.A
-            I1 = (utils.Sqrt(-self.DELTA)) / 2 * self.A
-            I2 = (utils.Sqrt(-self.DELTA)) / 2 * self.A
+            print("X2 = " + str(-self.B) + "/" + str(2* self.A) + " + i * square(" + str(-self.DELTA) + ")/" + str(2* self.A))
+            X1 = -self.B / (2 * self.A)
+            X2 = -self.B / (2 * self.A)
+            I1 = (utils.Sqrt(-self.DELTA)) / (2 * self.A)
+            I2 = (utils.Sqrt(-self.DELTA)) / (2 * self.A)
             print ("X1 = " + str(X1) + " + " + str(I1) + " * i")
             print ("X2 = " + str(X2) + " - " + str(I2) + " * i")
 
