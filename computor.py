@@ -45,7 +45,7 @@ class computer:
         # print  ("A = " + str(self.A))
         # print  ("B = " + str(self.B))
         # print  ("C = " + str(self.C))
-        print("degre: ",self.degre)
+        print("degree: ",self.degre)
         print("Simplified form: ", end="")
         if self.C != 0:
             if self.C < 0:
@@ -86,7 +86,7 @@ class computer:
             X = -self.B / (2 * self.A)
             print ("This polynomial equation have 1 solution:\n X = " + str(X))
         elif self.DELTA > 0:
-            print("This polynomial equation have 2 solution:")
+            print("This polynomial equation have 2 solutions:")
             print("X1 = " + str(-self.B) + " + square(" + str(self.DELTA) + ") / " + str(2 * self.A))
             print("X2 = " + str(-self.B) + " - square(" + str(self.DELTA) + ") / " + str(2* self.A))
             X1 = (-self.B + utils.Sqrt(self.DELTA)) / (2 * self.A)
@@ -94,7 +94,7 @@ class computer:
             print("X1 = " + str(X1))
             print("X2 = " + str(X2))
         elif self.DELTA < 0:
-            print("This polynomial equation have 2 complex solution:")
+            print("This polynomial equation have 2 complex solutions:")
             print("X1 = " + str(-self.B) + "/" + str(2* self.A) + " - i * square(" + str(-self.DELTA) + ")/" + str(2* self.A))
             print("X2 = " + str(-self.B) + "/" + str(2* self.A) + " + i * square(" + str(-self.DELTA) + ")/" + str(2* self.A))
             X1 = -self.B / (2 * self.A)
